@@ -31,10 +31,10 @@ defmodule Oban.Job do
         ]
 
   @type unique_option ::
-          {:fields, [unique_field()]}
+          {:fields, unique_field()}
           | {:keys, [atom()]}
           | {:period, unique_period()}
-          | {:states, [unique_state()]}
+          | {:states, unique_state()}
 
   @type replace_option :: [
           :args
@@ -69,10 +69,10 @@ defmodule Oban.Job do
           | {:queue, atom() | binary()}
           | {:schedule_in, schedule_in_option()}
           | {:replace_args, boolean()}
-          | {:replace, [replace_option()]}
+          | {:replace, replace_option()}
           | {:scheduled_at, DateTime.t()}
           | {:tags, tags()}
-          | {:unique, [unique_option()]}
+          | {:unique, unique_option()}
           | {:worker, atom() | binary()}
 
   @type t :: %__MODULE__{
@@ -96,8 +96,8 @@ defmodule Oban.Job do
           cancelled_at: DateTime.t(),
           conf: Oban.Config.t(),
           conflict?: boolean(),
-          replace: [replace_option()],
-          unique: %{fields: [unique_field()], period: unique_period(), states: [unique_state()]},
+          replace: replace_option(),
+          unique: %{fields: unique_field(), period: unique_period(), states: unique_state()},
           unsaved_error: %{kind: atom(), reason: term(), stacktrace: Exception.stacktrace()}
         }
 
